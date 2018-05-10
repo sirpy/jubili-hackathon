@@ -1,4 +1,9 @@
 import React from 'react'
+import Web3 from 'web3'
+import JubiliContract from '/imports/truffle/build/contracts/Jubili.json'
+// import JubiliTokenContract from '/imports/truffle/build/contracts/JubiliToken.json'
+import Contract from 'truffle-contract'
+import {Jubili} from '/client/jubili.js'
 
 
 //1. on state change checks if user has account on contract (contract.isUser)
@@ -10,10 +15,24 @@ import React from 'react'
 //7. on event redirect to main screen
 export default class Login extends React.component {
   constructor(props) {
-
+    this.isJubiliUser()
+    this.state = {
+      isUser:false
+    }
   }
 
+  componentWillUpdate() {
+    isJubiliUser()
+  }
+  async isJubiliUser() {
+    let isUser = await Jubili.isUser()
+    if(isUser)
+      this.setState({isUser:true})
+  }
   render() {
+    if(this.state.isUser)
+      return <Redirect path="/"/>
+    else
     return <div>welcome</div>
   }
 
