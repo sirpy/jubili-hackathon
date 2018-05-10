@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {InitJubili} from '/client/jubili.js'
 import Login from '/client/Login.jsx'
+import Invite from '/client/Invite.jsx'
 import SideBar from '/client/SideBar'
 import UserBadges from '/client/Badges.jsx'
 
@@ -14,6 +15,10 @@ import {
   Switch
 } from 'react-router-dom'
 
+
+const Account = () => (
+  <div>hello</div>
+)
 const Layout = (props) => (
 	<main style={{display:'flex', flexDirection:'column'}}>
       <div style={{display:'flex'}}>
@@ -23,26 +28,63 @@ const Layout = (props) => (
 				<SideBar/>
 			</aside>
 			<div style={{display:'flex',flexDirection:'column'}}>
-				{props.children}
+      <Switch>
+        <Route path="/account" component={Account}/>
+        <Route path="/invite" component={Invite}/>
+      </Switch>
 			</div>
 	</main>
 )
 
-const Routes = () => {
-  return (
-    <Router>
-      <Layout>
-        <Switch>
-          <Route path="/login" component={Login}/>
-        </Switch>
-      </Layout>
-    </Router>
-  )
+const CleanLayout = (props) => (
+	<main style={{display:'flex', flexDirection:'column'}}>
+      <Switch>
+        <Route path="/login" component={Login}/>
+      </Switch>
+	</main>
+)
 
+var layoutAssignments = {
+  '/login': CleanLayout,
+  // '/pricing': FullLayout,
+  // '/signup': SimpleLayout,
+  // '/login': SimpleLayout
 }
+
+var layoutPicker = function(props){
+  var LayoutS = layoutAssignments[props.location.pathname];
+  console.log("layout",props,LayoutS)
+  return LayoutS ? <LayoutS/> : <Layout/>;
+};
+
+class Main extends React.Component {
+  render(){
+    return (
+      <Router>
+        <Route path="*" render={layoutPicker}/>
+      </Router>
+    );
+  }
+}
+
+// const Routes = () => {
+//   return (
+//     <Router>
+//       <L>
+//
+//       </Route>
+//       <Route>
+//         <Switch>
+//           <Route path="/x" component={Login}/>
+//         </Switch>
+//       </Route>
+//     </Router>
+//   )
+//
+// }
 const App = () => (
   <MuiThemeProvider>
-    <Routes />
+    <Main />
   </MuiThemeProvider>
 );
 

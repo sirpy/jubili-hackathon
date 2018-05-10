@@ -35,15 +35,15 @@ export default class Login extends React.Component {
 
   //listen to new user event
   initListeners() {
-    
+
   }
   componentWillUpdate() {
     // this.isJubiliUser()
   }
   async isJubiliUser() {
     let isUser = await Jubili.isUser()
-    if(isUser)
-      this.setState({isUser:true})
+    // if(isUser)
+    //   this.setState({isUser:true})
   }
   async createUser() {
     await Jubili.newUser()
@@ -55,10 +55,18 @@ export default class Login extends React.Component {
     else
     return (
       <ValidatorForm onSubmit={() => this.createUser()}>
-        <RaisedButton type="submit" label="Join With Jubili" style={{marginTop:'20px'}}/>
-        <RaisedButton type="submit" label="Join With UPort" style={{marginTop:'20px'}}/>
-        <RaisedButton type="submit" label="Join With Civic" style={{marginTop:'20px'}}/>
-        <RaisedButton type="submit" label="Join With BrightID" style={{marginTop:'20px'}}/>
+        <div>
+          <RaisedButton type="submit" label="Join With Jubili" style={{marginTop:'20px'}}/>
+        </div>
+        <div>
+        <RaisedButton type="submit" label="Join With UPort" style={{marginTop:'20px'}} icon={  <img src='/uport.svg' width={'50px'} />}/>
+        </div>
+        <div>
+          <RaisedButton type="submit" label="Join With Civic" style={{marginTop:'20px'}}/>
+        </div>
+        <div>
+          <RaisedButton type="submit" label="Join With BrightID" style={{marginTop:'20px'}} icon={  <img src='https://www.brightid.org/wordpress/wp-content/uploads/2018/02/logo-31.jpg' width={'100px'} />}/>
+          </div>
       </ValidatorForm>
     )
   }
