@@ -9,7 +9,7 @@ import {withRouter} from 'react-router-dom'
 
 
   const style= {
-    headline: {textAlign: "center", fontSize: "42px", fontStyle: "italic", marginTop: "5px", color:"#323b73"},
+    headline: {textAlign: "center", fontSize: "42px", fontStyle: "italic", margin: "5px 0", color:"#323b73"},
     icons: { verticalAlign: "bottom"},
     container: {display:'flex', justifyContent:'space-around', width: "100%", fontSize: "20px"}
   }

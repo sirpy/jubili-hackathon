@@ -38,15 +38,17 @@ const Layout = (props) => (
       <div style={{display:'flex'}}>
         <UserBadges/>
       </div>
-			<aside style={{display:'flex'}}>
-				<SideBar/>
-			</aside>
-			<div style={{display:'flex',flexDirection:'column'}}>
-      <Switch>
-        <Route path="/payment" component={Payment}/>
-        <Route path="/invite" component={Invite}/>
-        <Route path="/network" component={TrustNetwork}/>
-      </Switch>
+      <div style={{display:'flex'}}>
+        <aside style={{display:'flex'}}>
+          <SideBar/>
+        </aside>
+        <div style={{display:'flex',flexDirection:'column', marginTop: "30px", marginLeft: "30px"}}>
+        <Switch>
+          <Route path="/payment" component={Payment}/>
+          <Route path="/invite" component={Invite}/>
+          <Route path="/network" component={TrustNetwork}/>
+        </Switch>
+        </div>
 			</div>
 	</main>
   </MuiThemeProvider>
