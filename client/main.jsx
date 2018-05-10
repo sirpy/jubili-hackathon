@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {InitJubili} from '/client/jubili.js'
+import {Login} from '/client/Login.jsx'
+import SideBar from '/client/SideBar'
+import UserBadges from '/client/Badges.jsx'
+
 import {
   BrowserRouter as Router,
   Route,
@@ -10,15 +14,28 @@ import {
   Switch
 } from 'react-router-dom'
 
-const Login = () => (
-  <div>Welcome</div>
+const Layout = (props) => (
+	<main style={{display:'flex'}}>
+      <div style={{display:'flex',flexDirection:'column'}}>
+        <UserBadges/>
+      </div>
+			<aside style={{display:'flex',flexDirection:'column'}}>
+				<SideBar/>
+			</aside>
+			<div style={{display:'flex',flexDirection:'column'}}>
+				{props.children}
+			</div>
+	</main>
 )
+
 const Routes = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/login" component={Login}/>
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route path="/login" component={Login}/>
+        </Switch>
+      </Layout>
     </Router>
   )
 

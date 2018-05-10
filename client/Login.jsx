@@ -13,8 +13,9 @@ import {Jubili} from '/client/jubili.js'
 //5. server executes on contract
 //6. client listens to web3 event NewUser (create listener in constructor and destroy on unmount)
 //7. on event redirect to main screen
-export default class Login extends React.component {
+export default class Login extends React.Component {
   constructor(props) {
+    super(props)
     this.isJubiliUser()
     this.state = {
       isUser:false
@@ -22,7 +23,7 @@ export default class Login extends React.component {
   }
 
   componentWillUpdate() {
-    isJubiliUser()
+    this.isJubiliUser()
   }
   async isJubiliUser() {
     let isUser = await Jubili.isUser()
