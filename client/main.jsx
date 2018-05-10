@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {InitJubili} from '/client/jubili.js'
-import {Login} from '/client/Login.jsx'
+import Login from '/client/Login.jsx'
 import SideBar from '/client/SideBar'
 import UserBadges from '/client/Badges.jsx'
 
@@ -15,11 +15,11 @@ import {
 } from 'react-router-dom'
 
 const Layout = (props) => (
-	<main style={{display:'flex'}}>
-      <div style={{display:'flex',flexDirection:'column'}}>
+	<main style={{display:'flex', flexDirection:'column'}}>
+      <div style={{display:'flex'}}>
         <UserBadges/>
       </div>
-			<aside style={{display:'flex',flexDirection:'column'}}>
+			<aside style={{display:'flex'}}>
 				<SideBar/>
 			</aside>
 			<div style={{display:'flex',flexDirection:'column'}}>
@@ -64,8 +64,9 @@ const initWeb3 = async () => {
 				let accounts = await web3.eth.getAccounts()
 				console.log("user accounts",accounts)
 				web3.eth.defaultAccount = accounts[0]
-        initJubili()
+
 			}
+      await InitJubili()
 		}
 
 }
