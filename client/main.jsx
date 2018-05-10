@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {InitJubili} from '/client/jubili.js'
 import Login from '/client/Login.jsx'
 import Invite from '/client/Invite.jsx'
 import SideBar from '/client/SideBar'
 import UserBadges from '/client/Badges.jsx'
+import * as Colors from 'material-ui/styles/colors';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import {
   BrowserRouter as Router,
@@ -20,6 +23,16 @@ const Account = () => (
   <div>hello</div>
 )
 const Layout = (props) => (
+
+  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme,{
+    "palette": {
+        "primary1Color": Colors.indigo400,
+        "accent1Color": Colors.teal600,
+        "canvasColor": Colors.blue50,
+
+        "textColor": Colors.indigo500
+    }
+})}>
 	<main style={{display:'flex', flexDirection:'column'}}>
       <div style={{display:'flex'}}>
         <UserBadges/>
@@ -34,6 +47,7 @@ const Layout = (props) => (
       </Switch>
 			</div>
 	</main>
+  </MuiThemeProvider>
 )
 
 const CleanLayout = (props) => (
