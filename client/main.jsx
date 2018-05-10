@@ -9,7 +9,8 @@ import * as Colors from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
+import TrustNetwork from '/client/TrustNetwork.jsx'
+import Payment from '/client/Payment.jsx'
 import {
   BrowserRouter as Router,
   Route,
@@ -42,8 +43,9 @@ const Layout = (props) => (
 			</aside>
 			<div style={{display:'flex',flexDirection:'column'}}>
       <Switch>
-        <Route path="/account" component={Account}/>
+        <Route path="/payment" component={Payment}/>
         <Route path="/invite" component={Invite}/>
+        <Route path="/network" component={TrustNetwork}/>
       </Switch>
 			</div>
 	</main>

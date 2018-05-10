@@ -27,9 +27,9 @@ const SideBar = (props) => (
   <div>
     <Paper style={style.paper}>
       <Menu>
-        <MenuItem primaryText="Pay with CredCoin" leftIcon={<PayIcon />}  onClick={() => props.history.push('/account/stake')}/>
-        <MenuItem primaryText="Trust Connect" leftIcon={<PersonAdd />} onClick={() => props.history.push('/account/stakefriend')}/>
-        <MenuItem primaryText="Trust Network" leftIcon={<GroupIcon />} />
+        <MenuItem primaryText="Pay with CredCoin" leftIcon={<PayIcon />}  onClick={() => props.history.push('/payment')}/>
+        <MenuItem primaryText="Trust Connect" leftIcon={<PersonAdd />} onClick={() => props.history.push('/invite')}/>
+        <MenuItem primaryText="Trust Network" leftIcon={<GroupIcon />} onClick={() => props.history.push('/network')}/>
       </Menu>
     </Paper>
   </div>
