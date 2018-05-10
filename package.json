@@ -17,5 +17,20 @@
     "react-router-dom": "^4.2.2",
     "truffle-contract": "^3.0.5",
     "web3": "^1.0.0-beta.34"
-  }
+  },
+  "description": "mutual social credit poc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirpy/jubili-hackathon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirpy/jubili-hackathon/issues"
+  },
+  "homepage": "https://github.com/sirpy/jubili-hackathon#readme"
 }
