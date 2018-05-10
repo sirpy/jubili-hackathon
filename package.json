@@ -1,0 +1,21 @@
+{
+  "name": "hackathon",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.42",
+    "lodash": "^4.17.10",
+    "material-ui": "^0.20.0",
+    "meteor-node-stubs": "^0.3.2",
+    "openzeppelin-solidity": "1.9.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-material-ui-form-validator": "^1.1.4",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "truffle-contract": "^3.0.5",
+    "web3": "^1.0.0-beta.34"
+  }
+}
