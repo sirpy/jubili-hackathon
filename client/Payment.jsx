@@ -16,8 +16,8 @@ export default class Payment extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      amount:'',
-      address:'0x0'
+      amount:'5',
+      address:'0x627306090abab3a6e1400e9345bc60c78a8bef57',
     }
     this.initListeners()
 

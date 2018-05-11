@@ -33,29 +33,29 @@ export default class Invite extends React.Component {
   }
   invite() {
     // let res = await Jubili.stakeFriend(this.state.friendEmail,parseInt(this.state.stake*100),this.state.trust)
-    console.log("submitStakeFriend",res)
-
+    console.log("submitStakeFriend")
+    this.setState({stage:'success'})
+    setTimeout(() => this.setState({stage:''}),1500)
   }
 
   render() {
-    if(this.state.isUser)
-      return <Redirect to="/"/>
-    else
+    if(this.state.stage=='success')
+      return <div style={{margin:'auto',fontSize:'24px'}}>Invitation sent</div>
     return (
       <ValidatorForm onSubmit={() => this.invite()}>
         <div>
           <TextValidator
                     hintText="Friend email"
                     onChange={(e,v) => this.setState({friendEmail:v})}
-                    name="friendAddr"
+                    name="friendEmail"
                     value={this.state.friendEmail}
-                    validators={['required', 'email']}
+                    validators={['required', 'isEmail']}
                     errorMessages={["This field is required","Invalid email format"]}
                 />
         </div>
         <div>
           <TextValidator
-            hintText="amount of collateral in CredCoins"
+            hintText="amount of collateral in JubiliCredits"
             onChange={(e,v) => this.setState({stake:v})}
             name="stake"
             value={this.state.stake}

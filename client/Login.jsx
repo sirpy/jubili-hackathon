@@ -18,7 +18,10 @@ const styles = {
   loginButton: {
     width:'300px',
     margin:'10px'
-  }
+  },
+  headline: {textAlign: "center", fontSize: "42px", fontStyle: "italic", marginTop: "20%", color:"#323b73"},
+  subheader: {textAlign: "center", fontSize: "30px", marginTop: "10%",marginBottom:'10%'},
+  loginheader: {textAlign: "center", fontSize: "20px",fontWeight:'bold'},
 }
 //1. on state change checks if user has account on contract (contract.isUser)
 //2. if exists then redirect to main page
@@ -48,8 +51,8 @@ export default class Login extends React.Component {
   async isJubiliUser() {
     let isUser = await Jubili.isUser()
     console.log("isUser",isUser)
-    if(isUser)
-      this.setState({isUser:true})
+    // if(isUser)
+    //   this.setState({isUser:true})
   }
   async createUser() {
     await Jubili.newUser()
@@ -60,18 +63,23 @@ export default class Login extends React.Component {
       return <Redirect to="/"/>
     else
     return (
-      <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+      <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
+        <div className="--titan " style={{textAlign:'center'}}>
+          <div style={styles.headline} className="--titan ">Welcome To Jubili</div>
+          <div style={styles.subheader}>Intrest Free Credit When You Need It</div>
+        </div>
+        <div style={styles.loginheader}>Prove you are human:</div>
         <div>
           <RaisedButton type="submit" label="Join With Jubili" style={styles.loginButton} onClick={() => this.createUser()}/>
         </div>
         <div>
-        <RaisedButton type="submit" label="Join With UPort" style={styles.loginButton} icon={  <img src='/uport.svg' width={'50px'} />}/>
+        <RaisedButton type="submit" label="Join With UPort" style={styles.loginButton} icon={  <img src='/uport.svg' width={'30px'} />}/>
         </div>
         <div>
-          <RaisedButton type="submit" label="Join With Civic" style={styles.loginButton}/>
+          <RaisedButton type="submit" label="Join With Civic" style={styles.loginButton} icon={  <img src='/civic.svg' width={'30px'} />}/>
         </div>
         <div>
-          <RaisedButton type="submit" label="Join With BrightID" style={styles.loginButton} icon={  <img src='https://www.brightid.org/wordpress/wp-content/uploads/2018/02/logo-31.jpg' width={'100px'} />}/>
+          <RaisedButton type="submit" label="Join With BrightID" iconStyle={{verticalAlign:'top'}} style={styles.loginButton} icon={  <img src='https://www.brightid.org/wordpress/wp-content/uploads/2018/02/logo-31.jpg' style={{verticalAlign:'top'}} width={'100px'} />}/>
           </div>
       </div>
     )

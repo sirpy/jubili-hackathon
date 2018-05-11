@@ -21,13 +21,13 @@ export default class TrustNetwork extends React.Component {
 
   render() {
     return (
-      <div style={{width:'300px'}}>
+      <div style={{width:'300px',fontSize:'24px'}}>
         <div style={styles.row}>
           <div style={{display:'flex'}}>Matan Cohen</div>
           <div style={{display:'flex'}}>Collateral: 5</div>
         </div>
         <div style={styles.row}>
-          <div style={{display:'flex'}}>Matan Cohen</div>
+          <div style={{display:'flex'}}>Sefi Merkel</div>
           <div style={{display:'flex'}}>Collateral: 5</div>
         </div>
       </div>
