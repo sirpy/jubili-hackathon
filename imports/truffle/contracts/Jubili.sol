@@ -46,12 +46,13 @@ contract Jubili  {
     return users[msg.sender].gotBonus;
   }
 
-  function newUser() public {
+  function newUser() public returns (bool){
     if(users[msg.sender].gotBonus)
-      return;
+      return false;
     users[msg.sender].gotBonus = true ;
     jblCredit.updateCreditLine(msg.sender,SOCIAL_TRUST_NEW);
     emit JubiliNewUser(msg.sender);
+    return true;
   }
 
 }

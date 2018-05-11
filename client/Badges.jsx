@@ -6,7 +6,7 @@ import GroupWorkIcon from 'material-ui/svg-icons/action/group-work';
 import AccountBalanceWalletIcon from 'material-ui/svg-icons/action/account-balance-wallet';
 import LoyaltyIcon from 'material-ui/svg-icons/action/loyalty';
 import {withRouter} from 'react-router-dom'
-
+import {JubiliCredit} from '/client/jubili.js'
 
   const style= {
     headline: {textAlign: "center", fontSize: "42px", fontStyle: "italic", margin: "5px 0", color:"#323b73"},
@@ -18,18 +18,26 @@ class Badges extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
-
-  }
-  componentWillMount() {
     this.initListeners()
   }
-  initListeners() {
+  componentWillMount() {
+    // this.initListeners()
+  }
+  async initListeners() {
+    let balance =  await JubiliCredit.balanceOf(web3.eth.defaultAccount)
+    let cline = await JubiliCredit.getCreditLine()
+    let debt = await JubiliCredit.getDebt()
+    console.log("account:",{balance,cline,debt})
+    // balance.then((x) => {console.log("account data",{x})})
+
+    // let balance = await JubiliCredit.balanceOf()
+
+
     this.setState({
       trustScore: 5,
-      balance: 3,
-      socialTokens: 10,
-      socialTokensLocked: 5,
-      creditLine:300
+      balance: (balance.toNumber() - cline.toNumber())/100,
+      creditLine:cline.toNumber()/100,
+      debt:debt.toNumber()/100
     })
   }
 
@@ -42,11 +50,11 @@ class Badges extends React.Component {
             <GroupWorkIcon tooltip="Trust Score" style={style.icons}/>
             <span>Trust Score: {this.state.trustScore}</span>
           </div>
-          <div>        
+          <div>
             <AccountBalanceWalletIcon style={style.icons}/>
             <span>Balance: {this.state.balance}</span>
           </div>
-          <div>        
+          <div>
             <LoyaltyIcon style={style.icons}/>
             <span>Credit Line: {this.state.creditLine}</span>
           </div>

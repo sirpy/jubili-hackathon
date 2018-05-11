@@ -32,9 +32,17 @@ export default class Payment extends React.Component {
   }
   async pay() {
     // let res = await Jubili.stakeFriend(this.state.friendEmail,parseInt(this.state.stake*100),this.state.trust)
-    let res =  JubiliCredit.transfer(this.state.address,this.state.amount*100)
-    res.then(() => this.setState({payed:true})).catch(() => console.log("payment canceled"))    
-    console.log("submited payment",res)
+    try {
+
+      let res =  await JubiliCredit.transfer(this.state.address,this.state.amount*100)
+      console.log("submited payment",res,this.state.address,this.state.amount)
+    } catch (e) {
+      console.log("payment canceled")
+    } finally {
+
+    }
+    // res.then(() => this.setState({payed:true})).catch(() => console.log("payment canceled"))
+
 
   }
 

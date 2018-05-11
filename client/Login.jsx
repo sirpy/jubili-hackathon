@@ -14,7 +14,12 @@ import {
   Switch
 } from 'react-router-dom'
 
-
+const styles = {
+  loginButton: {
+    width:'300px',
+    margin:'10px'
+  }
+}
 //1. on state change checks if user has account on contract (contract.isUser)
 //2. if exists then redirect to main page
 //3. otherwise show create account button
@@ -42,8 +47,9 @@ export default class Login extends React.Component {
   }
   async isJubiliUser() {
     let isUser = await Jubili.isUser()
-    // if(isUser)
-    //   this.setState({isUser:true})
+    console.log("isUser",isUser)
+    if(isUser)
+      this.setState({isUser:true})
   }
   async createUser() {
     await Jubili.newUser()
@@ -54,20 +60,20 @@ export default class Login extends React.Component {
       return <Redirect to="/"/>
     else
     return (
-      <ValidatorForm onSubmit={() => this.createUser()}>
+      <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
         <div>
-          <RaisedButton type="submit" label="Join With Jubili" style={{marginTop:'20px'}}/>
+          <RaisedButton type="submit" label="Join With Jubili" style={styles.loginButton} onClick={() => this.createUser()}/>
         </div>
         <div>
-        <RaisedButton type="submit" label="Join With UPort" style={{marginTop:'20px'}} icon={  <img src='/uport.svg' width={'50px'} />}/>
+        <RaisedButton type="submit" label="Join With UPort" style={styles.loginButton} icon={  <img src='/uport.svg' width={'50px'} />}/>
         </div>
         <div>
-          <RaisedButton type="submit" label="Join With Civic" style={{marginTop:'20px'}}/>
+          <RaisedButton type="submit" label="Join With Civic" style={styles.loginButton}/>
         </div>
         <div>
-          <RaisedButton type="submit" label="Join With BrightID" style={{marginTop:'20px'}} icon={  <img src='https://www.brightid.org/wordpress/wp-content/uploads/2018/02/logo-31.jpg' width={'100px'} />}/>
+          <RaisedButton type="submit" label="Join With BrightID" style={styles.loginButton} icon={  <img src='https://www.brightid.org/wordpress/wp-content/uploads/2018/02/logo-31.jpg' width={'100px'} />}/>
           </div>
-      </ValidatorForm>
+      </div>
     )
   }
 

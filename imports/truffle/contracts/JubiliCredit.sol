@@ -19,10 +19,10 @@ contract JubiliCredit is MintableToken {
     function JubiliCredit() public {
     }
 
-    function getCreditLine() public returns (uint256) {
+    function getCreditLine() public constant returns (uint256) {
       return creditLines[msg.sender];
     }
-    function getDebt() public returns (uint256) {
+    function getDebt() public constant returns (uint256) {
       return balances[msg.sender] - creditLines[msg.sender];
     }
     /**
